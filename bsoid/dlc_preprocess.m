@@ -27,9 +27,9 @@ function [data,perc_rect] = dlc_preprocess(rawdata,llh)
     end
     fprintf('Filtering low likelihood data points and replacing with the most recent position... \n');
     % Get rid of hind paws to speed up all following analyses
-    datax = rawdata(:,[2:3:17]);
-    datay = rawdata(:,[3:3:18]);
-    data_lh = rawdata(:,[4:3:19]);
+    datax = rawdata(:, [2:3:end]);
+    datay = rawdata(:, [3:3:end]);
+    data_lh = rawdata(:, [4:3:end]);
     % filter out likelihood below llh
     for x = 1:length(data_lh(1,:))
         perc_rect(x) = length(find(data_lh(:,x) < llh))/length(data_lh);
